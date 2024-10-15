@@ -12,8 +12,17 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        'bungee-hairline': ['Bungee Hairline', 'sans-serif'],
+        'geist-mono': ['Geist Mono', 'monospace'],
+        'geist-vf': ['Geist VF', 'sans-serif'],
+        'playfair-display': ['Playfair Display', 'serif'],
+        'poppins': ['Poppins', 'sans-serif'],
+        'lato': ['Lato', 'sans-serif'],
+      },
     },
   },
   plugins: [],
 };
+
 export default config;
