@@ -142,6 +142,287 @@
   font-display: swap;
   src: url('./fonts/Poppins-BlackItalic.ttf') format('truetype');
 }
+/* Fira Mono Bold */
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('./fonts/FiraMono-Bold.ttf') format('truetype');
+}
+
+/* Fira Code Bold */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('./fonts/FiraCode-Bold.ttf') format('truetype');
+}
+
+/* Fira Code Light */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./fonts/FiraCode-Light.ttf') format('truetype');
+}
+
+/* Fira Code Medium */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/FiraCode-Medium.ttf') format('truetype');
+}
+
+/* Fira Code Regular */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('./fonts/FiraCode-Regular.ttf') format('truetype');
+}
+
+/* Fira Code SemiBold */
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/FiraCode-SemiBold.ttf') format('truetype');
+}
+/* Fira Mono Bold */
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('./fonts/FiraMono-Bold.ttf') format('truetype');
+}
+
+/* Fira Mono Medium */
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/FiraMono-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Major Mono Display';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('./fonts/MajorMonoDisplay-Regular.ttf') format('truetype');
+}
+/* Roboto Mono Bold */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-Bold.ttf') format('truetype');
+}
+
+/* Roboto Mono Bold Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  font-weight: bold;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-BoldItalic.ttf') format('truetype');
+}
+
+/* Roboto Mono Extra Light */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-ExtraLight.ttf') format('truetype');
+}
+
+/* Roboto Mono Extra Light Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-ExtraLightItalic.ttf') format('truetype');
+}
+
+/* Roboto Mono Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-Italic.ttf') format('truetype');
+}
+
+/* Roboto Mono Light */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-Light.ttf') format('truetype');
+}
+
+/* Roboto Mono Light Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-LightItalic.ttf') format('truetype');
+}
+
+/* Roboto Mono Medium */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-Medium.ttf') format('truetype');
+}
+
+/* Roboto Mono Medium Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-MediumItalic.ttf') format('truetype');
+}
+
+/* Roboto Mono Regular */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-Regular.ttf') format('truetype');
+}
+
+/* Roboto Mono SemiBold */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-SemiBold.ttf') format('truetype');
+}
+
+/* Roboto Mono SemiBold Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-SemiBoldItalic.ttf') format('truetype');
+}
+
+/* Roboto Mono Thin */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-Thin.ttf') format('truetype');
+}
+
+/* Roboto Mono Thin Italic */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url('./fonts/RobotoMono-ThinItalic.ttf') format('truetype');
+}
+/* Sometype Mono SemiBold */
+@font-face {
+  font-family: 'Sometype Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/SometypeMono-SemiBold.ttf') format('truetype');
+}
+
+/* Sometype Mono Bold */
+@font-face {
+  font-family: 'Sometype Mono';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('./fonts/SometypeMono-Bold.ttf') format('truetype');
+}
+
+/* Sometype Mono Bold Italic */
+@font-face {
+  font-family: 'Sometype Mono';
+  font-style: italic;
+  font-weight: bold;
+  font-display: swap;
+  src: url('./fonts/SometypeMono-BoldItalic.ttf') format('truetype');
+}
+
+/* Sometype Mono Italic */
+@font-face {
+  font-family: 'Sometype Mono';
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+  src: url('./fonts/SometypeMono-Italic.ttf') format('truetype');
+}
+
+/* Sometype Mono Medium */
+@font-face {
+  font-family: 'Sometype Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/SometypeMono-Medium.ttf') format('truetype');
+}
+
+/* Sometype Mono Medium Italic */
+@font-face {
+  font-family: 'Sometype Mono';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/SometypeMono-MediumItalic.ttf') format('truetype');
+}
+
+/* Sometype Mono Regular */
+@font-face {
+  font-family: 'Sometype Mono';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('./fonts/SometypeMono-Regular.ttf') format('truetype');
+}
+
+/* Sometype Mono SemiBold Italic */
+@font-face {
+  font-family: 'Sometype Mono';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/SometypeMono-SemiBoldItalic.ttf') format('truetype');
+}
+/* Fira Mono Regular */
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('./fonts/FiraMono-Regular.ttf') format('truetype');
+}
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
