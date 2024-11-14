@@ -83,7 +83,7 @@ export default function Home() {
       {showName && (
         <div className="absolute inset-0 flex items-center justify-center">
           <h1
-            className={`text-white text-9xl transform transition-all duration-1000 ${
+            className={`text-white text-9xl transform transition-all duration-1000 font-bungee-hairline ${
               nameVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
@@ -118,7 +118,8 @@ export default function Home() {
             backgroundPosition: "center",
           }}
         >
-          <p className="text-white text-4xl">WEB DEVELOPER</p>
+          <div className="absolute inset-0 bg-black opacity-30"></div>
+          <p className="text-white text-4xl z-40">The Musician</p>
         </div>
 
         {/* Photography Gallery Section */}
@@ -143,7 +144,8 @@ export default function Home() {
             backgroundPosition: "center",
           }}
         >
-          <h2 className="text-white text-4xl">Photography Portfolio</h2>
+          <div className="absolute inset-0 bg-black opacity-30"></div>
+          <p className="text-white text-4xl z-40">The Artist</p>
         </div>
 
         {/* Developer Section */}
@@ -168,7 +170,8 @@ export default function Home() {
             backgroundPosition: "center",
           }}
         >
-          <h2 className="text-white text-4xl">THE DEVELOPER</h2>
+          <div className="absolute inset-0 bg-black opacity-30"></div>
+          <p className="text-white text-4xl z-40">The Developer</p>
         </div>
       </div>
     </div>
