@@ -535,6 +535,13 @@
   font-display: swap;
   src: url('./fonts/Poppins-ThinItalic.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Amithen Extra';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('./fonts/Amithen-Extra.ttf') format('truetype');
+}
 
 body {
   color: var(--foreground);

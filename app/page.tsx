@@ -85,13 +85,22 @@ export default function Home() {
       {showName && (
         <div className="absolute inset-0 flex items-center justify-center">
           <h1
-            className={`text-white text-9xl transform transition-opacity duration-4000 font-bungee-hairline ${
+            className={`text-white text-9xl  transform transition-opacity duration-4000 font-amithen-extra m-8 ${
               nameVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-24 opacity-0"
             }`}
           >
-            CESAR BACARO
+            CESAR
+          </h1>
+          <h1
+            className={`text-white text-9xl tracking-widest transform transition-opacity duration-4000 font-amithen-extra m-8 ${
+              nameVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-24 opacity-0"
+            }`}
+          >
+            BACARO
           </h1>
         </div>
       )}
