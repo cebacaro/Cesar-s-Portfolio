@@ -8,6 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      transitionDuration: {
+        '4000': '4000ms',
+        '5000': '5000ms',
+        '6000': '6000ms',
+        '7000': '6000ms',
+        '3000': '3000ms',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

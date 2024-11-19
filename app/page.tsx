@@ -1,9 +1,11 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import HeroMusic from "@/public/PHOTOS/HeroMusic.jpg";
 import WY from "@/public/PHOTOS/WY.png";
 import HeroDev from "@/public/GIIGS/HeroDev.jpg";
 import PhotographyGallery from "@/components/PhotographyGallery";
+import Image from "next/image";
 
 export default function Home() {
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
@@ -19,7 +21,7 @@ export default function Home() {
   // Delayed animations for each section
   useEffect(() => {
     const timers = [
-      setTimeout(() => setNameVisible(true), 500),
+      setTimeout(() => setNameVisible(true), 200),
       setTimeout(
         () => setVisibleSections((prev) => ({ ...prev, music: true })),
         2000
@@ -55,38 +57,38 @@ export default function Home() {
 
   if (expandedSection) {
     return (
-      <div className="relative w-screen h-screen flex flex-col items-center justify-center bg-black">
+      <div className="relative w-full h-screen flex flex-col items-center justify-center bg-white">
+        <button
+          onClick={handleGoBackClick}
+          className="text-gray-800 text-2xl mt-8"
+        >
+          GO BACK
+        </button>
         {expandedSection === "gallery" && <PhotographyGallery />}
         {expandedSection === "music" && (
-          <div className="text-white text-4xl">
+          <div className="text-gray-800 text-4xl">
             Musician Portfolio (Coming Soon)
           </div>
         )}
         {expandedSection === "dev" && (
-          <div className="text-white text-4xl">
+          <div className="text-gray-800 text-4xl">
             Developer Portfolio (Coming Soon)
           </div>
         )}
-        <button
-          onClick={handleGoBackClick}
-          className="items-baseline text-white text-2xl mb-8 mt-8"
-        >
-          GO BACK
-        </button>
       </div>
     );
   }
 
   return (
-    <div className="relative w-screen h-screen bg-black flex flex-col items-center justify-center">
+    <div className="relative w-full h-screen bg-black flex flex-col sm:flex-row">
       {/* Name Display */}
       {showName && (
         <div className="absolute inset-0 flex items-center justify-center">
           <h1
-            className={`text-white text-9xl transform transition-all duration-1000 font-bungee-hairline ${
+            className={`text-white text-9xl transform transition-opacity duration-4000 font-bungee-hairline ${
               nameVisible
                 ? "translate-y-0 opacity-100"
-                : "translate-y-10 opacity-0"
+                : "translate-y-24 opacity-0"
             }`}
           >
             CESAR BACARO
@@ -95,7 +97,7 @@ export default function Home() {
       )}
 
       {/* Sections */}
-      <div className="w-full h-screen flex">
+      <div className="flex flex-col sm:flex-row w-full h-full">
         {/* Music Section */}
         <div
           onClick={() => handleSectionClick("music")}
@@ -103,21 +105,23 @@ export default function Home() {
           onMouseLeave={handleMouseLeave}
           className={`${
             hoveredSection === "music"
-              ? "w-4/5"
+              ? "w-full sm:w-4/5"
               : hoveredSection
-              ? "w-1/5"
-              : "w-1/3"
+              ? "w-full sm:w-1/5"
+              : "w-full sm:w-1/3"
           } h-full flex items-center justify-center flex-col transition-all duration-700 ease-in-out cursor-pointer transform ${
             visibleSections.music
               ? "translate-y-0 opacity-100"
               : "-translate-y-20 opacity-0"
           }`}
-          style={{
-            backgroundImage: `url(${HeroMusic.src})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
         >
+          <Image
+            src={HeroMusic}
+            alt="HeroMusic"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center" }}
+            className="absolute inset-0"
+          />
           <div className="absolute inset-0 bg-black opacity-30"></div>
           <p className="text-white text-4xl z-40">The Musician</p>
         </div>
@@ -129,21 +133,23 @@ export default function Home() {
           onMouseLeave={handleMouseLeave}
           className={`${
             hoveredSection === "gallery"
-              ? "w-4/5"
+              ? "w-full sm:w-4/5"
               : hoveredSection
-              ? "w-1/5"
-              : "w-1/3"
+              ? "w-full sm:w-1/5"
+              : "w-full sm:w-1/3"
           } h-full flex items-center justify-center transition-all duration-700 ease-in-out cursor-pointer transform ${
             visibleSections.gallery
               ? "translate-y-0 opacity-100"
               : "-translate-y-20 opacity-0"
           }`}
-          style={{
-            backgroundImage: `url(${WY.src})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
         >
+          <Image
+            src={WY}
+            alt="WY"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center" }}
+            className="absolute inset-0"
+          />
           <div className="absolute inset-0 bg-black opacity-30"></div>
           <p className="text-white text-4xl z-40">The Artist</p>
         </div>
@@ -155,21 +161,23 @@ export default function Home() {
           onMouseLeave={handleMouseLeave}
           className={`${
             hoveredSection === "dev"
-              ? "w-4/5"
+              ? "w-full sm:w-4/5"
               : hoveredSection
-              ? "w-1/5"
-              : "w-1/3"
+              ? "w-full sm:w-1/5"
+              : "w-full sm:w-1/3"
           } h-full flex items-center justify-center transition-all duration-700 ease-in-out cursor-pointer transform ${
             visibleSections.dev
               ? "translate-y-0 opacity-100"
               : "-translate-y-20 opacity-0"
           }`}
-          style={{
-            backgroundImage: `url(${HeroDev.src})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
         >
+          <Image
+            src={HeroDev}
+            alt="HeroDev"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center" }}
+            className="absolute inset-0"
+          />
           <div className="absolute inset-0 bg-black opacity-30"></div>
           <p className="text-white text-4xl z-40">The Developer</p>
         </div>
