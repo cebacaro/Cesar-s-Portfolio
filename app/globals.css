@@ -542,6 +542,13 @@
   font-display: swap;
   src: url('./fonts/Amithen-Extra.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'MajorMonoDisplay-Regular';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('./fonts/MajorMonoDisplay-Regular.ttf') format('truetype');
+}
 
 body {
   color: var(--foreground);

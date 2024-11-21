@@ -5,6 +5,7 @@ import HeroMusic from "@/public/PHOTOS/HeroMusic.jpg";
 import WY from "@/public/PHOTOS/WY.png";
 import HeroDev from "@/public/GIIGS/HeroDev.jpg";
 import PhotographyGallery from "@/components/PhotographyGallery";
+import Musician from "@/components/Musician";
 import Image from "next/image";
 
 export default function Home() {
@@ -21,7 +22,7 @@ export default function Home() {
   // Delayed animations for each section
   useEffect(() => {
     const timers = [
-      setTimeout(() => setNameVisible(true), 200),
+      setTimeout(() => setNameVisible(true), 200), // Show the name initially
       setTimeout(
         () => setVisibleSections((prev) => ({ ...prev, music: true })),
         2000
@@ -31,12 +32,14 @@ export default function Home() {
         4000
       ),
       setTimeout(() => {
-        setVisibleSections((prev) => ({ ...prev, dev: true }));
-        setShowName(false);
-      }, 6000),
+        setVisibleSections((prev) => ({ ...prev, dev: true })); // Trigger the dev section independently
+      }, 6000), // Keep dev timing as before
+      setTimeout(() => {
+        setShowName(false); // Hide the name later
+      }, 7000), // Delay this to keep the name visible longer
     ];
 
-    return () => timers.forEach(clearTimeout);
+    return () => timers.forEach((timer) => clearTimeout(timer));
   }, []);
 
   const handleSectionClick = (section: string) => {
@@ -44,7 +47,9 @@ export default function Home() {
   };
 
   const handleGoBackClick = () => {
-    setExpandedSection(null);
+    setTimeout(() => {
+      setExpandedSection(null);
+    }, 2000); // 2000 milliseconds = 2 seconds
   };
 
   const handleMouseEnter = (section: string) => {
@@ -60,16 +65,12 @@ export default function Home() {
       <div className="relative w-full h-screen flex flex-col items-center justify-center bg-white">
         <button
           onClick={handleGoBackClick}
-          className="text-gray-800 text-2xl mt-8"
+          className="text-gray-800 text-2xl  absolute top-8 "
         >
           GO BACK
         </button>
         {expandedSection === "gallery" && <PhotographyGallery />}
-        {expandedSection === "music" && (
-          <div className="text-gray-800 text-4xl">
-            Musician Portfolio (Coming Soon)
-          </div>
-        )}
+        {expandedSection === "music" && <Musician />}
         {expandedSection === "dev" && (
           <div className="text-gray-800 text-4xl">
             Developer Portfolio (Coming Soon)
@@ -83,9 +84,9 @@ export default function Home() {
     <div className="relative w-full h-screen bg-black flex flex-col sm:flex-row">
       {/* Name Display */}
       {showName && (
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center font-major-mono-display">
           <h1
-            className={`text-white text-9xl  transform transition-opacity duration-4000 font-amithen-extra m-8 ${
+            className={`text-white text-9xl  transform transition-opacity ease-in-out duration-6000  m-8 ${
               nameVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-24 opacity-0"
@@ -94,7 +95,7 @@ export default function Home() {
             CESAR
           </h1>
           <h1
-            className={`text-white text-9xl tracking-widest transform transition-opacity duration-4000 font-amithen-extra m-8 ${
+            className={`text-white text-9xl tracking-widest ease-in-out transform transition-opacity duration-6000 m-8 ${
               nameVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-24 opacity-0"
@@ -118,7 +119,7 @@ export default function Home() {
               : hoveredSection
               ? "w-full sm:w-1/5"
               : "w-full sm:w-1/3"
-          } h-full flex items-center justify-center flex-col transition-all duration-700 ease-in-out cursor-pointer transform ${
+          } h-full flex items-center justify-center flex-col transition-all duration-1000 ease-in-out cursor-pointer transform ${
             visibleSections.music
               ? "translate-y-0 opacity-100"
               : "-translate-y-20 opacity-0"
@@ -146,7 +147,7 @@ export default function Home() {
               : hoveredSection
               ? "w-full sm:w-1/5"
               : "w-full sm:w-1/3"
-          } h-full flex items-center justify-center transition-all duration-700 ease-in-out cursor-pointer transform ${
+          } h-full flex items-center justify-center transition-all duration-3000 ease-in-out cursor-pointer transform ${
             visibleSections.gallery
               ? "translate-y-0 opacity-100"
               : "-translate-y-20 opacity-0"
@@ -174,7 +175,7 @@ export default function Home() {
               : hoveredSection
               ? "w-full sm:w-1/5"
               : "w-full sm:w-1/3"
-          } h-full flex items-center justify-center transition-all duration-700 ease-in-out cursor-pointer transform ${
+          } h-full flex items-center justify-center transition-all duration-3000 ease-in-out cursor-pointer transform ${
             visibleSections.dev
               ? "translate-y-0 opacity-100"
               : "-translate-y-20 opacity-0"

@@ -9,7 +9,7 @@ const photos = [HeroMusic, HeroDev, WY, HeroMusic, HeroMusic, HeroMusic];
 
 const PhotographyGallery: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 bg-white text-black sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 w-full h-full ">
+    <div className="grid grid-cols-1 bg-white text-black sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4  w-[80%] h-[70%]  ">
       {photos.map((photo, index) => (
         <Card key={index} className="py-4">
           <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
