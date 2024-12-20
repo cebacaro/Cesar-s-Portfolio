@@ -1,101 +1,195 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import HeroMusic from "@/public/PHOTOS/HeroMusic.jpg";
+import WY from "@/public/PHOTOS/WY.png";
+import HeroDev from "@/public/GIIGS/HeroDev.jpg";
+import PhotographyGallery from "@/components/PhotographyGallery";
+import Musician from "@/components/Musician";
 import Image from "next/image";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [hoveredSection, setHoveredSection] = useState<string | null>(null);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [visibleSections, setVisibleSections] = useState({
+    music: false,
+    gallery: false,
+    dev: false,
+  });
+  const [showName, setShowName] = useState(true);
+  const [nameVisible, setNameVisible] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  // Delayed animations for each section
+  useEffect(() => {
+    const timers = [
+      setTimeout(() => setNameVisible(true), 200), // Show the name initially
+      setTimeout(
+        () => setVisibleSections((prev) => ({ ...prev, music: true })),
+        2000
+      ),
+      setTimeout(
+        () => setVisibleSections((prev) => ({ ...prev, gallery: true })),
+        4000
+      ),
+      setTimeout(() => {
+        setVisibleSections((prev) => ({ ...prev, dev: true })); // Trigger the dev section independently
+      }, 6000), // Keep dev timing as before
+      setTimeout(() => {
+        setShowName(false); // Hide the name later
+      }, 7000), // Delay this to keep the name visible longer
+    ];
+
+    return () => timers.forEach((timer) => clearTimeout(timer));
+  }, []);
+
+  const handleSectionClick = (section: string) => {
+    setExpandedSection(section);
+  };
+
+  const handleGoBackClick = () => {
+    setExpandedSection(null);
+  };
+
+  const handleMouseEnter = (section: string) => {
+    setHoveredSection(section);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredSection(null);
+  };
+
+  if (expandedSection) {
+    return (
+      <div className="relative w-full h-screen flex flex-col items-center justify-center bg-white">
+        <button
+          onClick={handleGoBackClick}
+          className="text-black text-2xl  absolute top-8  bg-transparent p-2 border rounded-md border-gray-600 "
+        >
+          GO BACK
+        </button>
+        {expandedSection === "gallery" && <PhotographyGallery />}
+        {expandedSection === "music" && <Musician />}
+        {expandedSection === "dev" && (
+          <div className="text-gray-800 text-4xl">
+            Developer Portfolio (Coming Soon)
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-full h-screen bg-black flex flex-col sm:flex-row">
+      {/* Name Display */}
+      {showName && (
+        <div className="absolute inset-0 flex items-center justify-center font-major-mono-display">
+          <h1
+            className={`text-white text-9xl  transform transition-opacity ease-in-out duration-6000  m-8 ${
+              nameVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-24 opacity-0"
+            }`}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            CESAR
+          </h1>
+          <h1
+            className={`text-white text-9xl tracking-widest ease-in-out transform transition-opacity duration-6000 m-8 ${
+              nameVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-24 opacity-0"
+            }`}
           >
-            Read our docs
-          </a>
+            BACARO
+          </h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      )}
+
+      {/* Sections */}
+      <div className="flex flex-col sm:flex-row w-full h-full">
+        {/* Music Section */}
+        <div
+          onClick={() => handleSectionClick("music")}
+          onMouseEnter={() => handleMouseEnter("music")}
+          onMouseLeave={handleMouseLeave}
+          className={`${
+            hoveredSection === "music"
+              ? "w-full sm:w-4/5"
+              : hoveredSection
+              ? "w-full sm:w-1/5"
+              : "w-full sm:w-1/3"
+          } h-full flex items-center justify-center flex-col transition-all duration-1000 ease-in-out cursor-pointer transform ${
+            visibleSections.music
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-20 opacity-0"
+          }`}
         >
           <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src={HeroMusic}
+            alt="HeroMusic"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center" }}
+            className="absolute inset-0"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <div className="absolute inset-0 bg-black opacity-30"></div>
+          <p className="text-white text-4xl z-40">The Musician</p>
+        </div>
+
+        {/* Photography Gallery Section */}
+        <div
+          onClick={() => handleSectionClick("gallery")}
+          onMouseEnter={() => handleMouseEnter("gallery")}
+          onMouseLeave={handleMouseLeave}
+          className={`${
+            hoveredSection === "gallery"
+              ? "w-full sm:w-4/5"
+              : hoveredSection
+              ? "w-full sm:w-1/5"
+              : "w-full sm:w-1/3"
+          } h-full flex items-center justify-center transition-all duration-1000 ease-in-out cursor-pointer transform ${
+            visibleSections.gallery
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-20 opacity-0"
+          }`}
         >
           <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+            src={WY}
+            alt="WY"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center" }}
+            className="absolute inset-0"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <div className="absolute inset-0 bg-black opacity-30"></div>
+          <p className="text-white text-4xl z-40">The Artist</p>
+        </div>
+
+        {/* Developer Section */}
+        <div
+          onClick={() => handleSectionClick("dev")}
+          onMouseEnter={() => handleMouseEnter("dev")}
+          onMouseLeave={handleMouseLeave}
+          className={`${
+            hoveredSection === "dev"
+              ? "w-full sm:w-4/5"
+              : hoveredSection
+              ? "w-full sm:w-1/5"
+              : "w-full sm:w-1/3"
+          } h-full flex items-center justify-center transition-all duration-1000 ease-in-out cursor-pointer transform ${
+            visibleSections.dev
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-20 opacity-0"
+          }`}
         >
           <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+            src={HeroDev}
+            alt="HeroDev"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center" }}
+            className="absolute inset-0"
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <div className="absolute inset-0 bg-black opacity-30"></div>
+          <p className="text-white text-4xl z-40">The Developer</p>
+        </div>
+      </div>
     </div>
   );
 }
