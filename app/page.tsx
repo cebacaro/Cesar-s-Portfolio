@@ -47,9 +47,7 @@ export default function Home() {
   };
 
   const handleGoBackClick = () => {
-    setTimeout(() => {
-      setExpandedSection(null);
-    }, 2000); // 2000 milliseconds = 2 seconds
+    setExpandedSection(null);
   };
 
   const handleMouseEnter = (section: string) => {
@@ -65,7 +63,7 @@ export default function Home() {
       <div className="relative w-full h-screen flex flex-col items-center justify-center bg-white">
         <button
           onClick={handleGoBackClick}
-          className="text-gray-800 text-2xl  absolute top-8 "
+          className="text-black text-2xl  absolute top-8  bg-transparent p-2 border rounded-md border-gray-600 "
         >
           GO BACK
         </button>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 
 import "./globals.css";
 
@@ -14,7 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased font-fira-mono font-extrabold">
+      <body className="antialiased font-fira-mono font-bold">
+        <Script
+          src="https://sdk.scdn.co/spotify-player.js"
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>
