@@ -17,9 +17,10 @@ const Musician = () => {
       <div className="w-1/4 flex flex-col justify-center p-8">
         <h1 className="text-4xl font-bold text-black mb-4">Musician</h1>
         <p className="text-lg text-gray-700 leading-relaxed">
-          I've been playing guitar for over 10 years. I've played in a few bands
-          and have performed at various venues in the NYC area. I'm currently
-          working on a solo project and hope to release some music soon.
+          I&apos;ve been playing guitar for over 10 years. I&apos;ve played in a
+          few bands and have performed at various venues in the NYC area.
+          I&apos;m currently working on a solo project and hope to release some
+          music soon.
         </p>
       </div>
     </div>

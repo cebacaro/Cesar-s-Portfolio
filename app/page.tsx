@@ -147,7 +147,7 @@ export default function Home() {
               : hoveredSection
               ? "w-full sm:w-1/5"
               : "w-full sm:w-1/3"
-          } h-full flex items-center justify-center transition-all duration-3000 ease-in-out cursor-pointer transform ${
+          } h-full flex items-center justify-center transition-all duration-1000 ease-in-out cursor-pointer transform ${
             visibleSections.gallery
               ? "translate-y-0 opacity-100"
               : "-translate-y-20 opacity-0"
@@ -175,7 +175,7 @@ export default function Home() {
               : hoveredSection
               ? "w-full sm:w-1/5"
               : "w-full sm:w-1/3"
-          } h-full flex items-center justify-center transition-all duration-3000 ease-in-out cursor-pointer transform ${
+          } h-full flex items-center justify-center transition-all duration-1000 ease-in-out cursor-pointer transform ${
             visibleSections.dev
               ? "translate-y-0 opacity-100"
               : "-translate-y-20 opacity-0"
