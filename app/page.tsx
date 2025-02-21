@@ -6,6 +6,7 @@ import WY from "@/public/PHOTOS/WY.png";
 import HeroDev from "@/public/GIIGS/HeroDev.jpg";
 import PhotographyGallery from "@/components/PhotographyGallery";
 import Musician from "@/components/Musician";
+import Developer from "@/components/Developer";
 import Image from "next/image";
 
 export default function Home() {
@@ -60,29 +61,25 @@ export default function Home() {
 
   if (expandedSection) {
     return (
-      <div className="relative w-full h-screen flex flex-col items-center justify-center bg-white">
+      <div className="relative w-full h-screen flex flex-col items-center justify-center bg-black">
         <button
           onClick={handleGoBackClick}
-          className="text-black text-2xl  absolute top-8  bg-transparent p-2 border rounded-md border-gray-600 "
+          className="text-white text-2xl p-6 bg-transparent border-gray-600 "
         >
           GO BACK
         </button>
         {expandedSection === "gallery" && <PhotographyGallery />}
         {expandedSection === "music" && <Musician />}
-        {expandedSection === "dev" && (
-          <div className="text-gray-800 text-4xl">
-            Developer Portfolio (Coming Soon)
-          </div>
-        )}
+        {expandedSection === "dev" && <Developer />}
       </div>
     );
   }
 
   return (
-    <div className="relative w-full h-screen bg-black flex flex-col sm:flex-row">
+    <div className="relative w-screen h-screen bg-black flex flex-col sm:flex-row">
       {/* Name Display */}
       {showName && (
-        <div className="absolute inset-0 flex items-center justify-center font-major-mono-display">
+        <div className="absolute inset-0 h-full w-full flex flex-col items-center justify-center font-geist-mono ">
           <h1
             className={`text-white text-9xl  transform transition-opacity ease-in-out duration-6000  m-8 ${
               nameVisible
@@ -90,17 +87,13 @@ export default function Home() {
                 : "translate-y-24 opacity-0"
             }`}
           >
-            CESAR
+            CESAR BACARO
           </h1>
-          <h1
-            className={`text-white text-9xl tracking-widest ease-in-out transform transition-opacity duration-6000 m-8 ${
-              nameVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-24 opacity-0"
-            }`}
-          >
-            BACARO
-          </h1>
+          <div className="font-geist-mono">
+            <p className="text-white text-4xl font-geist-mono">
+              Full Stack Developer
+            </p>
+          </div>
         </div>
       )}
 

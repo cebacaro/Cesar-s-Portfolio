@@ -1,35 +1,90 @@
-import React from "react";
 import Image from "next/image";
-import { Card, CardHeader, CardBody } from "@nextui-org/react"; // Import NextUI components
-import HeroMusic from "@/public/PHOTOS/HeroMusic.jpg";
-import HeroDev from "@/public/GIIGS/HeroDev.jpg";
-import WY from "@/public/PHOTOS/WY.png";
+import img1 from "../public/images/1.jpeg";
+import img2 from "../public/images/2.jpeg";
+import img3 from "../public/images/3.jpeg";
+import img4 from "../public/images/4.jpeg";
+import img5 from "../public/images/5.jpeg";
+import img6 from "../public/images/6.jpeg";
+import img7 from "../public/images/7.jpeg";
+import img8 from "../public/images/8.jpeg";
+import img9 from "../public/images/9.jpeg";
+import img10 from "../public/images/10.jpeg";
+import img11 from "../public/images/11.jpeg";
 
-const photos = [HeroMusic, HeroDev, WY, HeroMusic, HeroMusic, HeroMusic];
+const images = [
+  {
+    src: img1,
+    width: 300,
+    height: 300,
+  },
+  {
+    src: img2,
+    width: 300,
+    height: 300,
+  },
+  {
+    src: img3,
+    width: 300,
+    height: 300,
+  },
+  {
+    src: img4,
+    width: 300,
+    height: 300,
+  },
+  {
+    src: img5,
+    width: 300,
+    height: 300,
+  },
+  {
+    src: img6,
+    width: 300,
+    height: 300,
+  },
+  {
+    src: img7,
+    width: 300,
+    height: 300,
+  },
+  {
+    src: img8,
+    width: 300,
+    height: 300,
+  },
+  {
+    src: img9,
+    width: 300,
+    height: 300,
+  },
+  {
+    src: img10,
+    width: 300,
+    height: 300,
+  },
+  {
+    src: img11,
+    width: 300,
+    height: 300,
+  },
+];
 
-const PhotographyGallery: React.FC = () => {
+export default function PhotographyGallery() {
   return (
-    <div className="grid grid-cols-1 bg-white text-black sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4  w-[80%] h-[70%]  ">
-      {photos.map((photo, index) => (
-        <Card key={index} className="py-4">
-          <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-            <p className="text-tiny uppercase font-bold">Photo {index + 1}</p>
-            <small className="text-default-500">Randomized Size</small>
-          </CardHeader>
-          <CardBody
-            className="overflow-hidden"
-            style={{ height: "full", width: "full" }}
-          >
+    <>
+      <h1 className="">Photography Gallery</h1>
+      <div className="grid grid-cols-3 gap-4 w-screen h-screen overflow-auto bg-black">
+        {images.map((image, idx) => (
+          <div key={idx} className="relative w-full h-full m-8 ">
             <Image
-              src={photo}
-              alt={`Photo ${index + 1}`}
-              className="rounded-lg h-full w-full"
+              src={image.src}
+              alt="Gallery Image"
+              className="justify-center object-cover"
+              layout="responsive"
             />
-          </CardBody>
-        </Card>
-      ))}
-    </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
-};
-
-export default PhotographyGallery;
+}

@@ -37,16 +37,17 @@ const Musician = () => {
         <div className="w-1/4 flex flex-col justify-center p-8">
           <h1 className="text-4xl font-bold text-black mb-4">Musician</h1>
           <p className="text-lg text-gray-700 leading-relaxed">
-            I&apos;ve been playing guitar for over 10 years. I&apos;ve played in
-            a few bands and have performed at various venues in the NYC area.
-            I&apos;m currently working on a solo project and hope to release
-            some music soon.
+            Cesar Bacaro is a dynamic and versatile percussionist with years of
+            experience performing in New Orleans vibrant music scene. With a
+            deep passion for rhythm and a strong background in Latin, funk,
+            jazz, and Afro-Caribbean music, he has shared the stage with some of
+            the city&apos;s most respected artists.
           </p>
         </div>
       </div>
 
       {/* Spotify Album Section */}
-      <SpotifyPlayer token={token} />
+      {/* <SpotifyPlayer token={token} /> */}
     </>
   );
 };
