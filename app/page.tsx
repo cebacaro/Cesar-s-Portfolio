@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import HeroMusic from "@/public/PHOTOS/HeroMusic.jpg";
-import WY from "@/public/PHOTOS/WY.png";
+import WY from "@/public/PHOTOS/wy.png";
 import HeroDev from "@/public/GIIGS/HeroDev.jpg";
 import PhotographyGallery from "@/components/PhotographyGallery";
 import Musician from "@/components/Musician";
