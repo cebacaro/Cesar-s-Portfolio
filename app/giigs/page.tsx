@@ -22,7 +22,7 @@ export default function GiigsPage() {
   return (
     <AccentScope accent="giigs">
       {/* Hero */}
-      <section className="grid min-h-screen items-center gap-10 px-5 pb-16 pt-32 sm:px-8 lg:grid-cols-2">
+      <section className="grid min-h-screen items-center gap-10 overflow-hidden px-5 pb-16 pt-32 sm:px-8 lg:grid-cols-2">
         <div>
           <Eyebrow>{giigs.hero.eyebrow}</Eyebrow>
           <h1 className="mt-5 font-display text-display-2xl font-black text-bone">
