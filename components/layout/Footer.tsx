@@ -13,16 +13,15 @@ export default function Footer() {
       <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <p className="font-mono text-eyebrow uppercase text-bone-faint">
-            Building something interesting?
+            Say hello
           </p>
-          <a
-            href={`mailto:${site.email}`}
-            className="mt-3 inline-block font-display text-display-lg font-extrabold text-bone transition-colors hover:text-[var(--accent)]"
-          >
-            Let&rsquo;s talk.
-          </a>
-          <address className="mt-3 font-mono text-xs not-italic text-bone-dim">
-            <a href={`mailto:${site.email}`}>{site.email}</a>
+          <address className="not-italic">
+            <a
+              href={`mailto:${site.email}`}
+              className="mt-3 inline-block break-all font-display text-display-md font-extrabold text-bone transition-colors hover:text-[var(--accent)]"
+            >
+              {site.email}
+            </a>
           </address>
         </div>
 
