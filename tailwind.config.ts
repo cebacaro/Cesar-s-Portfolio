@@ -2,41 +2,55 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./content/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      transitionDuration: {
-        "4000": "4000ms",
-        "5000": "5000ms",
-        "6000": "6000ms",
-        "7000": "6000ms",
-        "3000": "3000ms",
-        "8000": "8000ms",
-      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        ink: {
+          950: "#0A0A0C",
+          900: "#101014",
+          800: "#17171D",
+          700: "#22222A",
+          600: "#33333D",
+        },
+        bone: {
+          DEFAULT: "#EDE8E0",
+          dim: "#B9B3A8",
+          faint: "#6E6A62",
+        },
+        accent: {
+          giigs: "#7B61FF",
+          music: "#FF3D5A",
+          photo: "#FFB454",
+          build: "#3DE8B0",
+        },
       },
       fontFamily: {
-        "bungee-hairline": ["Bungee Hairline", "sans-serif"],
-        "geist-mono": ["Geist Mono", "monospace"],
-        "geist-vf": ["Geist VF", "sans-serif"],
-        "playfair-display": ["Playfair Display", "serif"],
-        poppins: ["Poppins", "sans-serif"],
-        lato: ["Lato", "sans-serif"],
-        "fira-mono": ["Fira Mono", "monospace"],
-        "fira-code": ["Fira Code", "monospace"],
-        "roboto-mono": ["Roboto Mono", "monospace"],
-        "sometype-mono": ["Sometype Mono", "monospace"],
-        "amithen-extra": ["Amithen Extra", "sans-serif"],
-        "major-mono-display": ["MajorMonoDisplay-Regular", "monospace"],
+        display: ["var(--font-display)", "Georgia", "serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      },
+      fontSize: {
+        "display-2xl": [
+          "clamp(3.5rem, 9vw, 9.5rem)",
+          { lineHeight: "0.95", letterSpacing: "-0.02em" },
+        ],
+        "display-xl": [
+          "clamp(2.75rem, 6.5vw, 6.5rem)",
+          { lineHeight: "1.0", letterSpacing: "-0.02em" },
+        ],
+        "display-lg": ["clamp(2rem, 4.5vw, 4rem)", { lineHeight: "1.05" }],
+        "display-md": ["clamp(1.5rem, 3vw, 2.5rem)", { lineHeight: "1.15" }],
+        eyebrow: ["0.75rem", { lineHeight: "1", letterSpacing: "0.2em" }],
+      },
+      maxWidth: {
+        measure: "68ch",
       },
     },
   },
   plugins: [],
 };
-
 export default config;

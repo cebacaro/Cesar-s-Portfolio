@@ -1,188 +1,79 @@
-"use client";
+import type { Metadata } from "next";
+import AccentScope from "@/components/layout/AccentScope";
+import Hero from "@/components/home/Hero";
+import EntryCard from "@/components/home/EntryCard";
+import NowPreview from "@/components/home/NowPreview";
+import MarqueeStrip from "@/components/ui/MarqueeStrip";
+import Eyebrow from "@/components/ui/Eyebrow";
+import Prose from "@/components/ui/Prose";
+import ParallaxImage from "@/components/ui/ParallaxImage";
+import Reveal from "@/components/ui/Reveal";
+import CTALink from "@/components/ui/CTALink";
+import { home } from "@/content/home";
+import type { SectionKey } from "@/content/site";
 
-import React, { useState, useEffect } from "react";
-import HeroMusic from "@/public/PHOTOS/HeroMusic.jpg";
-import WY from "@/public/PHOTOS/wy.png";
-import HeroDev from "@/public/GIIGS/HeroDev.jpg";
-import PhotographyGallery from "@/components/PhotographyGallery";
-import Musician from "@/components/Musician";
-import Developer from "@/components/Developer";
-import Image from "next/image";
+export const metadata: Metadata = {
+  openGraph: { images: ["/opt/og/home.jpg"] },
+};
 
-export default function Home() {
-  const [hoveredSection, setHoveredSection] = useState<string | null>(null);
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
-  const [visibleSections, setVisibleSections] = useState({
-    music: false,
-    gallery: false,
-    dev: false,
-  });
-  const [showName, setShowName] = useState(true);
-  const [nameVisible, setNameVisible] = useState(false);
-
-  // Delayed animations for each section
-  useEffect(() => {
-    const timers = [
-      setTimeout(() => setNameVisible(true), 200), // Show the name initially
-      setTimeout(
-        () => setVisibleSections((prev) => ({ ...prev, music: true })),
-        2000
-      ),
-      setTimeout(
-        () => setVisibleSections((prev) => ({ ...prev, gallery: true })),
-        4000
-      ),
-      setTimeout(() => {
-        setVisibleSections((prev) => ({ ...prev, dev: true })); // Trigger the dev section independently
-      }, 6000), // Keep dev timing as before
-      setTimeout(() => {
-        setShowName(false); // Hide the name later
-      }, 7000), // Delay this to keep the name visible longer
-    ];
-
-    return () => timers.forEach((timer) => clearTimeout(timer));
-  }, []);
-
-  const handleSectionClick = (section: string) => {
-    setExpandedSection(section);
-  };
-
-  const handleGoBackClick = () => {
-    setExpandedSection(null);
-  };
-
-  const handleMouseEnter = (section: string) => {
-    setHoveredSection(section);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredSection(null);
-  };
-
-  if (expandedSection) {
-    return (
-      <div className="relative w-full h-screen flex flex-col items-center justify-center bg-black">
-        <button
-          onClick={handleGoBackClick}
-          className="text-white text-2xl p-6 bg-transparent border-gray-600 "
-        >
-          GO BACK
-        </button>
-        {expandedSection === "gallery" && <PhotographyGallery />}
-        {expandedSection === "music" && <Musician />}
-        {expandedSection === "dev" && <Developer />}
-      </div>
-    );
-  }
-
+export default function HomePage() {
   return (
-    <div className="relative w-screen h-screen bg-black flex flex-col sm:flex-row">
-      {/* Name Display */}
-      {showName && (
-        <div className="absolute inset-0 h-full w-full flex flex-col items-center justify-center font-geist-mono ">
-          <h1
-            className={`text-white text-9xl  transform transition-opacity ease-in-out duration-6000  m-8 ${
-              nameVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-24 opacity-0"
-            }`}
-          >
-            CESAR BACARO
-          </h1>
-          <div className="font-geist-mono">
-            <p className="text-white text-4xl font-geist-mono">
-              Full Stack Developer
-            </p>
+    <AccentScope accent="neutral">
+      <Hero />
+
+      <MarqueeStrip
+        items={[
+          "Founder of Giigs",
+          "New Orleans percussionist",
+          "Software builder",
+          "Photographer",
+          "Cuba → NOLA",
+        ]}
+      />
+
+      <section
+        aria-label="Explore"
+        className="grid gap-4 px-5 py-24 sm:grid-cols-2 sm:px-8 lg:grid-cols-4"
+      >
+        {home.entries.map((entry, i) => (
+          <EntryCard
+            key={entry.href}
+            {...entry}
+            accent={entry.accent as SectionKey}
+            index={i}
+          />
+        ))}
+      </section>
+
+      <section className="border-t border-ink-700 px-5 py-24 sm:px-8">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <Reveal>
+              <Eyebrow className="mb-8">{home.story.eyebrow}</Eyebrow>
+            </Reveal>
+            <Prose paragraphs={home.story.paragraphs} lead />
           </div>
-        </div>
-      )}
-
-      {/* Sections */}
-      <div className="flex flex-col sm:flex-row w-full h-full">
-        {/* Music Section */}
-        <div
-          onClick={() => handleSectionClick("music")}
-          onMouseEnter={() => handleMouseEnter("music")}
-          onMouseLeave={handleMouseLeave}
-          className={`${
-            hoveredSection === "music"
-              ? "w-full sm:w-4/5"
-              : hoveredSection
-              ? "w-full sm:w-1/5"
-              : "w-full sm:w-1/3"
-          } h-full flex items-center justify-center flex-col transition-all duration-1000 ease-in-out cursor-pointer transform ${
-            visibleSections.music
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-20 opacity-0"
-          }`}
-        >
-          <Image
-            src={HeroMusic}
-            alt="HeroMusic"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center" }}
-            className="absolute inset-0"
+          <ParallaxImage
+            src="/opt/street-brass-band.webp"
+            alt="Brass band reflected in a rain puddle on a New Orleans street"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="hidden aspect-[3/4] max-h-[560px] lg:block"
           />
-          <div className="absolute inset-0 bg-black opacity-30"></div>
-          <p className="text-white text-4xl z-40">The Musician</p>
         </div>
+      </section>
 
-        {/* Photography Gallery Section */}
-        <div
-          onClick={() => handleSectionClick("gallery")}
-          onMouseEnter={() => handleMouseEnter("gallery")}
-          onMouseLeave={handleMouseLeave}
-          className={`${
-            hoveredSection === "gallery"
-              ? "w-full sm:w-4/5"
-              : hoveredSection
-              ? "w-full sm:w-1/5"
-              : "w-full sm:w-1/3"
-          } h-full flex items-center justify-center transition-all duration-1000 ease-in-out cursor-pointer transform ${
-            visibleSections.gallery
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-20 opacity-0"
-          }`}
-        >
-          <Image
-            src={WY}
-            alt="WY"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center" }}
-            className="absolute inset-0"
-          />
-          <div className="absolute inset-0 bg-black opacity-30"></div>
-          <p className="text-white text-4xl z-40">The Artist</p>
-        </div>
+      <NowPreview />
 
-        {/* Developer Section */}
-        <div
-          onClick={() => handleSectionClick("dev")}
-          onMouseEnter={() => handleMouseEnter("dev")}
-          onMouseLeave={handleMouseLeave}
-          className={`${
-            hoveredSection === "dev"
-              ? "w-full sm:w-4/5"
-              : hoveredSection
-              ? "w-full sm:w-1/5"
-              : "w-full sm:w-1/3"
-          } h-full flex items-center justify-center transition-all duration-1000 ease-in-out cursor-pointer transform ${
-            visibleSections.dev
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-20 opacity-0"
-          }`}
-        >
-          <Image
-            src={HeroDev}
-            alt="HeroDev"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center" }}
-            className="absolute inset-0"
-          />
-          <div className="absolute inset-0 bg-black opacity-30"></div>
-          <p className="text-white text-4xl z-40">The Developer</p>
-        </div>
-      </div>
-    </div>
+      <section className="border-t border-ink-700 px-5 py-28 text-center sm:px-8">
+        <Reveal>
+          <p className="font-display text-display-xl font-black text-bone">
+            {home.cta.line}
+          </p>
+          <div className="mt-10">
+            <CTALink href="/contact">{home.cta.action}</CTALink>
+          </div>
+        </Reveal>
+      </section>
+    </AccentScope>
   );
 }
